@@ -15,7 +15,7 @@ Once victim clone malicious repository and runs vulnerable Git-LFS version on th
 ![how-does-work](./pro2.png)
 ![how-does-work](./pro3.png)
 
-### Who uses Tabnabbing
+### Who uses 
 * Attackers
 * Teachers
 * Microsoft
