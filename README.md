@@ -10,7 +10,7 @@ It allows attackers to achieve remote code execution if the Windows-using victim
 
 
 ### How does this work
-Once victim clone malicious repository and runs vulnerable Git-LFS version on their system.These automatically executed codes may be Trojans.
+Once victim clone malicious repository and runs vulnerable Git-LFS version on their system,the malicious code will run automatically.These automatically executed codes may be Trojans.
 ![how-does-work](./pro1.png)
 ![how-does-work](./pro2.png)
 ![how-does-work](./pro3.png)
