@@ -11,33 +11,42 @@ It allows attackers to achieve remote code execution if the Windows-using victim
 
 ### How does this work
 Once victim clone malicious repository and runs vulnerable Git-LFS version on their system.These automatically executed codes may be Trojans.
-![how-does-work](./phishing&tabnabbing/images/图片1.png)
+![how-does-work](./pro1.png)
+![how-does-work](./pro2.png)
+![how-does-work](./pro3.png)
 
 ### Who uses Tabnabbing
 * Attackers
 * Teachers
 * Microsoft
+* Linux
+* Git
 * ...
 
-### Why is Tabnabbing useful
-People can take measures to avoid net fishing attempts and slightly modify their browsing habits. When contacting a letter or account number that requires you to "check your identity" (or the gist of any other letter used in phishing), it is wise to contact the company from which the letter is obviously sourced to check whether the email is legal. In addition, the address known to individuals is the real website of the company, which can be visited by entering in the website bar of the browser, rather than blindly believing the hyperlinks in any suspected fraud email. The anti phishing working group (apwg), an industry and law enforcement agency, suggests that traditional phishing fraud techniques may become obsolete in the future as people become more aware of the social engineering tricks used by net fishermen. They predict that website grafting and other use of rogue software will become common tools to steal information.
+### Why is useful
+It can prevent attackers from using this vulnerability to download all contents in Git folder. If there is sensitive information in the folder, such as site source code, database account password, etc., the attacker may directly control the server.
 
 ### What is the real-world impact
-Almost all legal e-mails from companies to their customers contain at least one message that online fishermen don't have at hand. Some companies, such as PayPal, always address their customers by their customer user name in their e-mail, and so on. If the recipient of an e-mail is addressed in a common format (such as "Dear PayPal customer"), it is likely to be an attempt to fish online. Emails from banks and credit card companies often include part of the account number. However, recent research shows that the public usually does not distinguish between the first and last numbers of account numbers, which is a serious problem because the first few numbers are usually the same for all customers of a financial institution. People can be trained to raise their suspicions if the email does not contain any specific personal information. However, in early 2006, online fishing attempted to use personalized information, which made it unsafe to list personal information to ensure that the email was legal. In addition, another recent study concluded that listing personal information did not significantly affect the success rate of phishing attacks, indicating that most people did not pay attention to these details.
+A vulnerability crisis triggered by git will affect all developers in the community. When users operate in malicious code base, they may be attacked by arbitrary code execution. The remote code repository contains sub module definitions and data, which are bundled together as folders and submitted to the parent code repository. When the code warehouse is copied back and forth, GIT will initially put the parent warehouse in the working directory and then prepare to copy the sub module.
+
+However, GIT will later find that it does not need to copy the sub module, because the sub module has been submitted to the parent repository, it is also written to the working directory, and the sub module already exists on disk. Therefore, GIT can skip the step of grabbing files and use sub modules directly in the working directory on disk.
+
+It is the sub module configuration vulnerability that makes this error, so git sets the vulnerability by the sub module. The child module repository is submitted to the parent repository and has never been physically copied. There may be configured hooks in the sub module repository. When the user reappears, the malicious parent library will be carefully designed. Write to the working directory, then git reads the sub modules, writes them to the working directory, and finally executes any post checkout hook in the sub module repository.
 
 Demo/How to run this Demo
 ----
-Demo is in ./phishing&tabnabbing/demo, which contains four html pages. Firstly enter the file through CMD and deploy these four html files to the local server by command 'http-server'. A local host address will be generated, type the address in browser and we can enter the local host.
-![p1](./phishing&tabnabbing/images/p1.png)
-We start with A.html, which is a personal account with some tags and a 'open new page' button. This button is designed by a hacker to triger the tabnabbing. Users will find that the tags work as usual to open some pages they are familiar with. But if they click the button, a new page(B.html) occurs and it warns users something is wrong and they need to sign in again. When users come back to the original pege they will see a log in page(C.html). Actually now the address has been changed and this is a fake log in page. If users are careless and don't notice that stange address change they will trust this fake page and enter their log in information. Hacker can set some functions to this page, once users click 'sign in' buttom, their username and password will be passed to a new page(D.html) and hackers can access these information on the back-end of D.html. In this case users' account information leak out and users don't even know that. Hacker can do something bad with these information like stealing money or sell their account.
-![p2](./phishing&tabnabbing/images/p2.png)
-![p3](./phishing&tabnabbing/images/p3.png)
-![p4](./phishing&tabnabbing/images/p4.png)
-![p5](./phishing&tabnabbing/images/p5.png)
+Step1:Open a Linux Virtual Machine and use ifconfig to find your ip address,then modify the ip address in file revsh_powersh.ps1, then in linux, listen to port 1337(which defind in file revsh_powersh.ps1) by using command nc -l -p 1337
+
+Step2:Open a cmd in windows and use git to clone the repository
+
+Step3:At this time,the linux virtual mcahine already get control the windows, we can run some malicious code on linux, such as mkdir test or start calc to test the bug
+![p2](./p2.png)
+![p3](./p3.png)
+![p4](./p4.png)
+![p5](./p5.png)
 
 
 Citations
 ---------
-* https://en.wikipedia.org/wiki/Phishing
-* https://en.wikipedia.org/wiki/Tabnabbing
-* https://xz.aliyun.com/t/7080
+* https://git-lfs.github.com/
+* https://github.com/DeeLMind/CVE-2020-27955-LFS
