@@ -3,14 +3,14 @@ Git-LFS Remote Code Execution Vulnerability
 ==============
 
 [Git LFS](https://git-lfs.github.com/) is a Git extension developed by Github to implement Git‘s support for large files. Remote code execution issue found on Git-LFS versions <= 2.12 on Windows platforms.
-![Git LFS](./phishing&tabnabbing/images/phishing.png)
+![Git LFS](./gitlfs.png)
 
-[Tabnabbing](https://en.wikipedia.org/wiki/Tabnabbing)is a type of phishing attack, which persuades users to submit their login details and passwords to popular websites by impersonating those sites and convincing the user that the site is genuine.The objective of tabnabbing is the same as traditional phishing, in which attackers link victims to their site via an email or link.
-They hope that the target won’t notice the difference and will hand over their login details and other sensitive information believing that they are giving them to a legitimate site.
-![tabnabbing](./phishing&tabnabbing/images/tabnabbing.png)
+Git LFS vulnerability allows attackers to compromise targets’ Windows systems
+It allows attackers to achieve remote code execution if the Windows-using victim is tricked into cloning the attacker’s malicious repository using a vulnerable Git version control tool.
 
-### How does Tabnabbing work
-for example, there is a link on site A, the user click it,  and open a new tab ,this malicious site will force the original site  a redirection,because this two tabs are so similar,the user sees the login page may be induced to believe the page is legitimate and enter their login,and the attacker will obtain your sensitive information and that will be used for improper purpose.
+
+### How does this work
+Once victim clone malicious repository and runs vulnerable Git-LFS version on their system.These automatically executed codes may be Trojans.
 ![how-does-work](./phishing&tabnabbing/images/图片1.png)
 
 ### Who uses Tabnabbing
